@@ -1,0 +1,79 @@
+@page
+@model CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Word</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Word.English" class="control-label"></label>
+                <input asp-for="Word.English" class="form-control" />
+                <span asp-validation-for="Word.English" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Word.Tamil" class="control-label"></label>
+                <input asp-for="Word.Tamil" class="form-control" />
+                <span asp-validation-for="Word.Tamil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Word.Irula" class="control-label"></label>
+                <input asp-for="Word.Irula" class="form-control" />
+                <span asp-validation-for="Word.Irula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Word.Toda" class="control-label"></label>
+                <input asp-for="Word.Toda" class="form-control" />
+                <span asp-validation-for="Word.Toda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Word.Pania" class="control-label"></label>
+                <input asp-for="Word.Pania" class="form-control" />
+                <span asp-validation-for="Word.Pania" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Word.Maduva" class="control-label"></label>
+                <input asp-for="Word.Maduva" class="form-control" />
+                <span asp-validation-for="Word.Maduva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Word.Meaning" class="control-label"></label>
+                <input asp-for="Word.Meaning" class="form-control" />
+                <span asp-validation-for="Word.Meaning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Word.PartOfSpeech" class="control-label"></label>
+                <select asp-for="Word.PartOfSpeech">
+                    <option value="NOUN">NOUN</option>
+                    <option value="VERB">VERB</option>
+                    <option value="ADVERB">ADVERB</option>
+                    <option value="PRONOUN">PRONOUN</option>
+                </select> 
+                <span asp-validation-for="Word.PartOfSpeech" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Word.Categories" class="control-label"></label>
+                <input asp-for="Word.Categories" class="form-control" />
+                <span asp-validation-for="Word.Categories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

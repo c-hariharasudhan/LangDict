@@ -1,0 +1,48 @@
+@page
+@model HomeModel
+@{
+    ViewData["Title"] = "Dictionary";
+}
+
+<h2>Dictionary</h2>
+
+
+<form asp-page="./Home" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchText" />
+            <input type="submit" value="Search" class="btn btn-default" /> 
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    English Word
+                        </th>
+                <!-- <th>
+                    Meaning
+                </th>
+            <th></th> -->
+               
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Words) {
+        <tr>
+            <!-- <td>
+                @Html.DisplayFor(modelItem => item.English)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+             -->
+            <td>
+                 <a asp-page="./Details" asp-route-id="@item.Id">@item.English</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
