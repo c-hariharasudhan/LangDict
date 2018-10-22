@@ -9,3 +9,13 @@ D:\NewDictionary\obj\Debug\netcoreapp2.0\NewDictionary.AssemblyInfoInputs.cache
 D:\NewDictionary\obj\Debug\netcoreapp2.0\NewDictionary.AssemblyInfo.cs
 D:\NewDictionary\obj\Debug\netcoreapp2.0\NewDictionary.dll
 D:\NewDictionary\obj\Debug\netcoreapp2.0\NewDictionary.pdb
+D:\195500-Hari\Hari\LangDict\LangDict\bin\Debug\netcoreapp2.0\NewDictionary.deps.json
+D:\195500-Hari\Hari\LangDict\LangDict\bin\Debug\netcoreapp2.0\NewDictionary.runtimeconfig.json
+D:\195500-Hari\Hari\LangDict\LangDict\bin\Debug\netcoreapp2.0\NewDictionary.runtimeconfig.dev.json
+D:\195500-Hari\Hari\LangDict\LangDict\bin\Debug\netcoreapp2.0\NewDictionary.dll
+D:\195500-Hari\Hari\LangDict\LangDict\bin\Debug\netcoreapp2.0\NewDictionary.pdb
+D:\195500-Hari\Hari\LangDict\LangDict\obj\Debug\netcoreapp2.0\NewDictionary.csproj.CoreCompileInputs.cache
+D:\195500-Hari\Hari\LangDict\LangDict\obj\Debug\netcoreapp2.0\NewDictionary.AssemblyInfoInputs.cache
+D:\195500-Hari\Hari\LangDict\LangDict\obj\Debug\netcoreapp2.0\NewDictionary.AssemblyInfo.cs
+D:\195500-Hari\Hari\LangDict\LangDict\obj\Debug\netcoreapp2.0\NewDictionary.dll
+D:\195500-Hari\Hari\LangDict\LangDict\obj\Debug\netcoreapp2.0\NewDictionary.pdb
