@@ -43,7 +43,8 @@ namespace NewDictionary
                 options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
                 options.Database = Configuration.GetSection("MongoConnection:Database").Value;
             });
-
+            
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddTransient<IDictionaryRepository, DictionaryRepository>();
         }
 
