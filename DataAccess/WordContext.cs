@@ -17,7 +17,8 @@ namespace NewDictionary.DataAccess{
         {
             get
             {
-                return _database.GetCollection<Word>("Word");
+                //return _database.GetCollection<Word>("Word");
+                return _database.GetCollection<Word>("WordDetails");
             }
         }
     }
