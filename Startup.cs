@@ -44,7 +44,6 @@ namespace NewDictionary
                 options.Database = Configuration.GetSection("MongoConnection:Database").Value;
             });
             
-            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddTransient<IDictionaryRepository, DictionaryRepository>();
         }
 
