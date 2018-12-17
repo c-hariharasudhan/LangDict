@@ -11,8 +11,8 @@ let fileName = args[2];
 const words = JSON.parse(fs.readFileSync(path.join(__dirname + '/data/' + fileName), 'utf-8'));
 
 mongoose.Promise = global.Promise;
-//mongoose.connect('mongodb://admin:abc123!@localhost');
-mongoose.connect("mongodb://localhost:27017/dictionary", { useNewUrlParser: true });
+mongoose.connect('mongodb://admin:abc123!@localhost');
+//mongoose.connect("mongodb://admin:abc123!@localhost/dictionary", { useNewUrlParser: true });
 
 
 console.log('Data migraion => File : ' + fileName);

@@ -49,7 +49,7 @@ namespace NewDictionary.DataAccess {
                 var filter = Builders<Word>.Filter.Where(p => p.English.ToLower().Contains(fieldValue.ToLower()));
 
                 var result = await _context.Words.Find(filter).ToListAsync();
-                //Console.WriteLine(result.Count);
+                Console.WriteLine(result.Count);
                 return result;
             }
             catch (Exception ex)
