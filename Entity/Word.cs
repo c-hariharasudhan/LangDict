@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace NewDictionary.Entity
 {
+  [BsonIgnoreExtraElements]
   public class Word{
     // [BsonId]
     //   public ObjectId InternalId {get;set;}
@@ -19,6 +20,8 @@ namespace NewDictionary.Entity
     [Required]
     [BsonElement("Tamil_Unicode")]
     public string Tamil{get;set;}
+    [BsonElement("Tamil_HW")]
+    public string TamilWord{get;set;}
     //  [Required]
     [BsonElement("Toda_Lexeme")]
     public string Toda {get;set;}
