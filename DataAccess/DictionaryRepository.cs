@@ -7,6 +7,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using NewDictionary.Entity;
 using NewDictionary.Interfaces;
+using NewDictionary.Models.KnownValues;
 
 namespace NewDictionary.DataAccess {
     public class DictionaryRepository : IDictionaryRepository
@@ -37,17 +38,17 @@ namespace NewDictionary.DataAccess {
             }
         }
 
-        public async Task<IEnumerable<Word>> GetWordsByField(string fieldName, string fieldValue)
+        //public async Task<IEnumerable<Word>> GetWordsByField(string fieldName, string fieldValue)
+        public async Task<IEnumerable<Word>> GetWordsByField(SearchField searchField, string fieldValue, SearchType searchType)
         {
             try
             {
-                //var filter = Builders<Word>.Filter.Eq(fieldName, fieldValue);
-                // var bsonRegex = new BsonRegularExpression(fieldValue, "i");
-                // Console.WriteLine(bsonRegex);
-                // var filter = Builders<Word>.Filter.Eq(fieldName, bsonRegex);
-                // Console.WriteLine(filter.ToString());
-                var filter = Builders<Word>.Filter.Where(p => p.English.ToLower().Contains(fieldValue.ToLower()));
-
+                var fieldName = Enum.GetName(typeof(SearchField), searchField);
+                var regexExp = searchType == SearchType.Contains ?  ".*{0}.*" : @"^{0}";
+                var regex = new BsonRegularExpression(string.Format(regexExp, fieldValue), "i");
+                Console.WriteLine(regex.ToString());
+                var filter = Builders<Word>
+                                .Filter.Regex(fieldName, regex);
                 var result = await _context.Words.Find(filter).ToListAsync();
                 Console.WriteLine(result.Count);
                 return result;

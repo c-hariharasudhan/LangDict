@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using NewDictionary.Entity;
 using NewDictionary.Interfaces;
 using MongoDB.Driver;
+using NewDictionary.Models.KnownValues;
 
 namespace NewDictionary.Pages
 {
@@ -17,6 +18,8 @@ namespace NewDictionary.Pages
         public HomeModel(IDictionaryRepository repository){
             _repository = repository;
         }
+        public SearchField SearchField {get;set;}
+        public SearchType SearchType {get;set;}
         [BindProperty]
         public List<Word> Words {get;set;}
         
@@ -26,7 +29,8 @@ namespace NewDictionary.Pages
             if(!string.IsNullOrEmpty(searchText)){
             Console.WriteLine(searchText);
             //var result = _repository.GetAllWords().Result;
-            var result = _repository.GetWordsByField("English", searchText).Result;
+            var result = _repository.GetWordsByField(SearchField, 
+                                    searchText, SearchType).Result;
             
             Words = result.ToList();
             Console.WriteLine(Words.Count);
