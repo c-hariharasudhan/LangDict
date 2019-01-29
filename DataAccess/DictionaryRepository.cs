@@ -17,6 +17,7 @@ namespace NewDictionary.DataAccess {
         public DictionaryRepository(IOptions<Settings> settings){
             _context = new WordContext(settings);
         }
+
         public async Task<IEnumerable<Word>> GetAllWords()
         {
             try{
@@ -58,6 +59,11 @@ namespace NewDictionary.DataAccess {
                 
                 throw ex;
             }
+        }
+
+        public bool HealthCheck()
+        {
+            return _context.IsMongoDbActive();
         }
 
         public async Task InsertWord(Word word)

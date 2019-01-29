@@ -1,4 +1,6 @@
+using System;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using NewDictionary.Entity;
 
@@ -20,6 +22,17 @@ namespace NewDictionary.DataAccess{
                 //return _database.GetCollection<Word>("Word");
                 return _database.GetCollection<Word>("worddetails");
             }
+        }
+
+        public bool IsMongoDbActive(){
+            try{
+            bool isMongoLive = _database.RunCommandAsync((Command<BsonDocument>)"{ping:1}").Wait(1000);
+            return isMongoLive;
+            }
+            catch(System.Exception ex){
+                Console.WriteLine(ex);
+            }
+            return false;
         }
     }
 }

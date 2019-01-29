@@ -5,6 +5,7 @@ using NewDictionary.Models.KnownValues;
 
 namespace NewDictionary.Interfaces {
     public interface IDictionaryRepository{
+        bool HealthCheck();
         Task<IEnumerable<Word>> GetAllWords();    
         //Task<IEnumerable<Word>> GetWordsByField(string fieldName, string fieldValue);
         Task<IEnumerable<Word>> GetWordsByField(SearchField searchField, string fieldValue, SearchType searchType);
