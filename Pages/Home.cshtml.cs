@@ -8,6 +8,8 @@ using NewDictionary.Entity;
 using NewDictionary.Interfaces;
 using MongoDB.Driver;
 using NewDictionary.Models.KnownValues;
+using NewDictionary.Models;
+
 
 namespace NewDictionary.Pages
 {
@@ -16,30 +18,78 @@ namespace NewDictionary.Pages
         private readonly IDictionaryRepository _repository;
 
         public HomeModel(IDictionaryRepository repository){
-            _repository = repository;
+            _repository = repository;            
         }
-        public SearchField SearchField {get;set;}
-        public SearchType SearchType {get;set;}
-        [BindProperty]
-        public List<Word> Words {get;set;}
+        [BindProperty(SupportsGet = true)]
+         public SearchField SearchField {get;set;}
+         [BindProperty(SupportsGet = true)]
+         public SearchType SearchType {get;set;}
+        [BindProperty(SupportsGet = true)]
+        public string SearchText {get;set;}
+
+        [BindProperty(SupportsGet = true)]
+        public List<DisplayField> DisplayFields{get;set;}
+                [BindProperty(SupportsGet = true)]
+        public List<FieldName> Fields{get;set;}
+
+         [BindProperty]
+         public List<Word> Words {get;set;}
         
-        public IActionResult OnGet(string searchText)
+       private void BuildDisplayFields(){
+           DisplayFields = new List<DisplayField>();
+            Array values = Enum.GetValues(typeof(FieldName));
+            Console.WriteLine("F : " + values.Length);
+            foreach( FieldName val in values )
+            {
+                DisplayFields.Add(new DisplayField{
+                    FieldName = Enum.GetName(typeof(FieldName), val),
+                    FieldValue = val,
+                    Selected = Fields.Any(f => f == val)
+                });
+            } 
+       }
+        public IActionResult OnGet()
         {
+            BuildDisplayFields();
             Words = new List<Word>();
-            if(!string.IsNullOrEmpty(searchText)){
-            Console.WriteLine(searchText);
-            //var result = _repository.GetAllWords().Result;
-            var result = _repository.GetWordsByField(SearchField, 
-                                    searchText, SearchType).Result;
-            
-            Words = result.ToList();
-            Console.WriteLine(Words.Count);
-            if(Words.Count == 1){
-                Console.WriteLine(Words.FirstOrDefault().Id);
-                return RedirectToPage("Details", new { id = Words.FirstOrDefault().Id });
-            }
+            TempData["DisplayFields"] = string.Join(",", Fields);
+            if(!string.IsNullOrEmpty(SearchText)){
+                Console.WriteLine(Fields.Count());
+                Console.WriteLine(SearchText);
+                Console.WriteLine("Field : {0}, Type : {1}", SearchField, SearchType);
+                //var result = _repository.GetAllWords().Result;
+                var result = _repository.GetWordsByField(SearchField, 
+                                        SearchText, SearchType).Result;
+                
+                Words = result.ToList();
+                Console.WriteLine(Words.Count);
+                if(Words.Count == 1){
+                    Console.WriteLine(Words.FirstOrDefault().Id);
+                    return RedirectToPage("Details", new { id = Words.FirstOrDefault().Id });
+                }
             }
             return Page();
         }
+
+        // public IActionResult OnPost()
+        // {
+        //     Console.WriteLine(Fields.Count());
+        //     BuildDisplayFields();
+        //      if(!string.IsNullOrEmpty(SearchText)){
+        //         Console.WriteLine(SearchText);
+        //         Console.WriteLine("Field : {0}, Type : {1}", SearchField, SearchType);
+        //         //var result = _repository.GetAllWords().Result;
+        //         var result = _repository.GetWordsByField(SearchField, 
+        //                                 SearchText, SearchType).Result;
+                
+        //         Words = result.ToList();
+        //         Console.WriteLine(Words.Count);
+        //         if(Words.Count == 1){
+        //             Console.WriteLine(Words.FirstOrDefault().Id);
+        //             return RedirectToPage("Details", new { id = Words.FirstOrDefault().Id });
+        //         }
+        //     }
+        //     return Page();
+        // }
     }
 }
