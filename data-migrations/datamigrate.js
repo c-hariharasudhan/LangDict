@@ -12,9 +12,9 @@ const words = JSON.parse(fs.readFileSync(path.join(__dirname + '/data/' + fileNa
 
 mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://admin:abc123!@localhost');
-mongoose.connect("mongodb://admin:abc123!@localhost/admin", { useNewUrlParser: true });
-
-
+//mongoose.connect("mongodb://admin:abc123!@localhost/admin", { useNewUrlParser: true });
+mongoose.connect('mongodb://admin:abc123!@ds035787.mlab.com:35787/dictionary', { useNewUrlParser: true })
+console.log(mongoose.connection.readyState)
 console.log('Data migraion => File : ' + fileName);
 
 let WordDetail = mongoose.model('WordDetail', {

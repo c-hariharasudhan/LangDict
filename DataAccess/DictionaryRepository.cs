@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
@@ -27,6 +28,16 @@ namespace NewDictionary.DataAccess {
                 throw ex;
             }
             
+        }
+
+        public async Task<IEnumerable<string>> GetCategories()
+        {
+            try{
+                return _context.Words.AsQueryable<Word>().Select(w => w.Categories).Distinct().ToList();
+            }
+            catch(Exception ex){
+                throw ex;
+            }
         }
 
         public async Task<Word> GetWordById(string id)

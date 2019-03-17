@@ -12,6 +12,8 @@ namespace NewDictionary.Interfaces {
         Task<Word> GetWordById(string id);
         Task InsertWord(Word word);
 
+        Task<IEnumerable<string>> GetCategories();
+
     }
    
 

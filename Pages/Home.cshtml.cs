@@ -8,6 +8,7 @@ using NewDictionary.Entity;
 using NewDictionary.Interfaces;
 using MongoDB.Driver;
 using NewDictionary.Models.KnownValues;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace NewDictionary.Pages
 {
@@ -17,7 +18,27 @@ namespace NewDictionary.Pages
 
         public HomeModel(IDictionaryRepository repository){
             _repository = repository;
+            BuildCategories();
         }
+
+        private void BuildCategories(){
+            var result = new List<string>();
+            var c = _repository.GetCategories().Result.OrderBy(cat => cat).ToList();
+            Categories = c.Select(s => new SelectListItem{
+                                Value = s, 
+                                Text = s
+                                }).ToList();
+            Console.WriteLine(Categories.Count());
+            // c.ForEach(cat => {
+            //     Console.WriteLine(cat);
+            //    // result.AddRange(cat.Split(';').ToList());
+            //     });
+            //Console.WriteLine(result.Distinct().Count());
+        }
+        [BindProperty]
+        public string Category{get;set;}
+        [BindProperty]
+        public List<SelectListItem> Categories {get;set;}
         public SearchField SearchField {get;set;}
         public SearchType SearchType {get;set;}
         [BindProperty]

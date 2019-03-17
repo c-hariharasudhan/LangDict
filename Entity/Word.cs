@@ -18,9 +18,9 @@ namespace NewDictionary.Entity
     [BsonElement("English_HW")]
     public string English{get;set;}
     [Required]
-    [BsonElement("Tamil_Unicode")]
-    public string Tamil{get;set;}
     [BsonElement("Tamil_HW")]
+    public string Tamil{get;set;}
+    [BsonElement("Tamil_Unicode")]
     public string TamilWord{get;set;}
     //  [Required]
     [BsonElement("Toda_Lexeme")]

@@ -12,7 +12,8 @@
         <select asp-for="SearchField" asp-items="Html.GetEnumSelectList<NewDictionary.Models.KnownValues.SearchField>()">
         </select>
         <select asp-for="SearchType" asp-items="Html.GetEnumSelectList<NewDictionary.Models.KnownValues.SearchType>()">
-        </select>    
+        </select>
+        <select asp-for="Category" asp-items="Model.Categories"></select>    
         <p>
             Find by name: <input type="text" name="SearchText" />
             <input type="submit" value="Search" class="btn btn-default" /> 
