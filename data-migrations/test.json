@@ -1,0 +1,39 @@
+[
+    {
+        "English_HW": "ash",
+        "POS": "NOUNS",
+        "Tamil_HW": "சாம்பல்",
+        "Tamil_Lexeme": "[saːm.pəl̪]",
+        "Irula_Lexeme": "[buːɖiː]",
+        "Pania_Lexeme": "[ˈm̃əɪɳ.nəɾ̪ʊ]",
+        "Toda_Lexeme": "[puːdi]",
+        "English_Gloss": "the residue that remains when something is burned",
+        "Semantic_Category": "NATURE; Earth",
+        "Irula_Metadata": "WLNE_001"
+    },
+    {
+        "English_HW": "cave",
+        "POS": "NOUNS",
+        "Tamil_HW": "குகை",
+        "Tamil_Lexeme": "[kʊ.kə͡j]",
+        "Irula_Lexeme": "[ɛl̪ɛ]",
+        "Pania_Lexeme": "[ˈʌ.l̪æ̀]",
+        "Toda_Lexeme": "[ɔɖʊ˺p]",
+        "Muduva_Lexeme": "[ʌ.ɭə]",
+        "English_Gloss": "a geological formation consisting of an underground enclosure with access from the surface of the ground or from the sea",
+        "Semantic_Category": "NATURE; Earth",
+        "Irula_Metadata": "WLNE_002"
+    },
+    {
+        "English_HW": "clay",
+        "POS": "NOUNS",
+        "Tamil_HW": "களிமண்",
+        "Tamil_Lexeme": "[kəɭɪ.məɳ]",
+        "Irula_Lexeme": "[kɳɖɪpɪmənʊ]",
+        "Pania_Lexeme": "[ˈséːɾ̪ʊ m̩əɪɳ̃.nʊ]",
+        "Toda_Lexeme": "[kəɾmɔɳ]",
+        "English_Gloss": "water-soaked soil; soft, wet earth",
+        "Semantic_Category": "NATURE; Earth",
+        "Irula_Metadata": "WLNE_003"
+    }
+]

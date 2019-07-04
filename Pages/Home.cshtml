@@ -9,6 +9,22 @@
 
 <form asp-page="./Home" method="get">
     <div class="form-actions no-color">
+        Search Field
+        <select asp-for="SearchField" asp-items="Html.GetEnumSelectList<NewDictionary.Models.KnownValues.SearchField>()">
+        </select>
+        Search Type
+        <select asp-for="SearchType" asp-items="Html.GetEnumSelectList<NewDictionary.Models.KnownValues.SearchType>()">
+        </select>
+        <select asp-for="Category" asp-items="Model.Categories"></select>    
+        </select>    
+        <div class="form-group">   
+            Display Fields
+            @foreach (var field in Model.DisplayFields){
+                <input type="checkbox" value="@field.FieldValue" name="Fields" asp-for="@field.Selected" >
+                <label class="control-label">@field.FieldName</label>
+            }  
+             
+        </div>
         <p>
             Find by name: <input type="text" name="SearchText" />
             <input type="submit" value="Search" class="btn btn-default" /> 
@@ -20,7 +36,7 @@
     <thead>
         <tr>
                 <th>
-                    English Word
+                    Search Results
                         </th>
                 <!-- <th>
                     Meaning

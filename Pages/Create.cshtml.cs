@@ -35,7 +35,7 @@ namespace NewDictionary{
                 await _repository.InsertWord(Word); 
                 return RedirectToPage("./Home"); 
             }
-                return Page();
+                //return Page();
         }
         #endregion
     }
