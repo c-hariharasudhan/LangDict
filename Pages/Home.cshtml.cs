@@ -83,7 +83,7 @@ namespace NewDictionary.Pages
                 Console.WriteLine("Field : {0}, Type : {1}", SearchField, SearchType);
                 //var result = _repository.GetAllWords().Result;
                 var result = _repository.GetWordsByField(SearchField, 
-                                        SearchText, SearchType).Result;
+                                        SearchText.Trim(), SearchType).Result;
                 
                 Words = result.ToList();
                 Console.WriteLine(Words.Count);
