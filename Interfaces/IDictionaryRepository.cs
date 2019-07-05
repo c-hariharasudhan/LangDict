@@ -8,7 +8,7 @@ namespace NewDictionary.Interfaces {
         bool HealthCheck();
         Task<IEnumerable<Word>> GetAllWords();    
         //Task<IEnumerable<Word>> GetWordsByField(string fieldName, string fieldValue);
-        Task<IEnumerable<Word>> GetWordsByField(SearchField searchField, string fieldValue, SearchType searchType);
+        Task<IEnumerable<Word>> GetWordsByField(SearchField searchField, string fieldValue, SearchType searchType, string category);
         Task<Word> GetWordById(string id);
         Task InsertWord(Word word);
 
