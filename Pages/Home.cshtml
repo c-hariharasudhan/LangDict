@@ -3,95 +3,87 @@
 @{
     ViewData["Title"] = "Dictionary";
 }
-<div class="row">
-<div class="col-md-9 col-md-push-1">
     <h3 class="text-center">Dictionary</h3>
     <div class="container">
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
-                <form asp-page="./Home" method="get">
-                    <div class="form-actions no-color">
-                        <div class="form-group">
-                            <label for="SearchField">Search Field</label>
-                            <select class="form-control" asp-for="SearchField" asp-items="Html.GetEnumSelectList<NewDictionary.Models.KnownValues.SearchField>()">
-                            </select>
-                        </div> 
-                        <div class="form-group">
-                            <label for="SearchType">Search Type</label>
-                            <select class="form-control"  asp-for="SearchType" asp-items="Html.GetEnumSelectList<NewDictionary.Models.KnownValues.SearchType>()">
-                            </select>
-                        </div>
-                        <!-- <select asp-for="Category" asp-items="Model.Categories"></select>    
-                        </select>     -->
-                        <div class="form-group">   
-                            <label>Display Fields</label>                            
-                        </div>
-                        @foreach (var field in Model.DisplayFields){
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" value="@field.FieldValue" name="Fields" asp-for="@field.Selected">
-                                <label class="form-check-label">@field.FieldName</label>
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Search Criteria</div>
+                <div class="panel-body">
+                    <form asp-page="./Home" method="get">
+                            <div class="form-group">
+                                <label for="SearchField">Search Field</label>
+                                <select class="form-control" asp-for="SearchField" asp-items="Html.GetEnumSelectList<NewDictionary.Models.KnownValues.SearchField>()">
+                                </select>
+                            </div> 
+                            <div class="form-group">
+                                <label for="SearchType">Search Type</label>
+                                <select class="form-control"  asp-for="SearchType" asp-items="Html.GetEnumSelectList<NewDictionary.Models.KnownValues.SearchType>()">
+                                </select>
                             </div>
-                            <!-- <input type="checkbox" value="@field.FieldValue" name="Fields" asp-for="@field.Selected" >
-                            <label class="control-label">@field.FieldName</label> -->
-                        } 
-                        <!-- <p>
-                            Find by name: <input type="text" name="SearchText" id="SearchText" />
-                            <input type="submit" value="Search" class="btn btn-default" /> 
-                        </p> -->
-                        <div class="input-group">
-                            <div class="input-group-btn search-panel">
-                                <select asp-for="Category" asp-items="Model.Categories" class="btn btn-default dropdown-toggle" data-toggle="dropdown"></select>    
-                                <!-- <select name="search_param" id="search_param" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <option value="all">All</option>
-                                    <option value="username">Username</option>
-                                    <option value="email">Email</option>
-                                    <option value="studentcode">Student Code</option>
-                                </select> -->
+                            <div class="form-group">   
+                                <label>Display Fields</label>                            
+                            
+                                @foreach (var field in Model.DisplayFields){
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label"><input class="form-check-input" type="checkbox" value="@field.FieldValue" name="Fields" asp-for="@field.Selected">
+                                        @field.FieldName</label>
+                                    </div>
+                                }
                             </div>
-                            <input type="text" class="form-control" name="SearchText" id="SearchText" placeholder="Search text...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
+                            <div class="input-group">
+                                <div class="input-group-btn search-panel">
+                                    <select asp-for="Category" asp-items="Model.Categories" class="btn btn-default dropdown-toggle" data-toggle="dropdown"></select>    
+                                </div>
+                                <input type="text" class="form-control" name="SearchText" id="SearchText" placeholder="Search text...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
 
-                    </div>
-                </form>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group">
+            <div class="panel panel-info">
+            <div class="panel-heading">Search Results</div>
+            <div class="panel-body">
+                    @if (Model.Words.Count() > 0)
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Search Results
+                                    </th>                                           
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Words) {
+                                        <tr>                        
+                                            <td>
+                                                <a asp-page="./Details" asp-route-id="@item.Id">@item.English</a>
+                                            </td>
+                                            <td>
+                                                <a asp-page="./Details" asp-route-id="@item.Id">@item.Tamil</a>
+                                            </td>
+                                        </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else{
+                        <div>No results found!</div>
+                    }
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-<div class="container">
-    @if (Model.Words.Count() > 0)
-    {
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">
-                        Search Results
-                    </th>                                           
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Words) {
-                        <tr>                        
-                            <td>
-                                <a asp-page="./Details" asp-route-id="@item.Id">@item.English</a>
-                            </td>
-                            <td>
-                                <a asp-page="./Details" asp-route-id="@item.Id">@item.Tamil</a>
-                            </td>
-                        </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else{
-        <div>No results found!</div>
-    }
-</div>
+
+
 @section Scripts{
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">

@@ -4,85 +4,98 @@
 @{
     ViewData["Title"] = "Create";
 }
-<!-- <style>
-    @@font-face {
-        font-family: tamil; src: url('@Url.Content("~/css/font/tamil_aishwarya.ttf")'); 
-    } 
-</style> -->
-<h2>Create</h2>
-
-<h4>Word</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Word.English" class="control-label"></label>
-                <input asp-for="Word.English" class="form-control" />
-                <span asp-validation-for="Word.English" class="text-danger"></span>
+<br />
+ <div class="panel-group col-sm-offset-2 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Create Word</div>
+            <div class="panel-body">
+                <form method="post" class="form-horizontal">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Word.English" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <input asp-for="Word.English" class="form-control" />
+                            <span asp-validation-for="Word.English" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Word.Tamil" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <input asp-for="Word.Tamil" class="form-control" />
+                            <span asp-validation-for="Word.Tamil" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Word.Irula" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <input asp-for="Word.Irula" class="form-control" />
+                            <span asp-validation-for="Word.Irula" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Word.Toda" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <input asp-for="Word.Toda" class="form-control" />
+                            <span asp-validation-for="Word.Toda" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Word.Pania" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <input asp-for="Word.Pania" class="form-control" />
+                            <span asp-validation-for="Word.Pania" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Word.Maduva" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <input asp-for="Word.Maduva" class="form-control" />
+                            <span asp-validation-for="Word.Maduva" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Word.Meaning" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <input asp-for="Word.Meaning" class="form-control" />
+                            <span asp-validation-for="Word.Meaning" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Word.PartOfSpeech" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <select asp-for="Word.PartOfSpeech">
+                                <option value="NOUN">NOUN</option>
+                                <option value="VERB">VERB</option>
+                                <option value="ADVERB">ADVERB</option>
+                                <option value="PRONOUN">PRONOUN</option>
+                            </select>
+                            <span asp-validation-for="Word.PartOfSpeech" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Word.Categories" class="control-label col-sm-4"></label>
+                        <div class="col-sm-8">
+                            <input asp-for="Word.Categories" class="form-control" />
+                            <span asp-validation-for="Word.Categories" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8 text-right">
+                        <button type="submit" class="btn btn-default">Create</button>
+                        <a asp-page="Index">Back to List</a>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div> -->
+                </form>
             </div>
-            <div class="form-group">
-                <!--<div class="col-md-4">-->
-                <label asp-for="Word.Tamil" class="control-label"></label>
-                <!-- <input asp-for="Word.Tamil" class="form-control" style="font-family:tamil;font-size:20px" /> -->
-                <input asp-for="Word.Tamil" class="form-control" />
-                <span asp-validation-for="Word.Tamil" class="text-danger"></span>
-                <!--</div>
-                <div class="col-md-8">
-                    <img src="images/tamilaishwarya.png">
-                </div>-->
-            </div>
-            <div class="form-group">
-                <label asp-for="Word.Irula" class="control-label"></label>
-                <input asp-for="Word.Irula" class="form-control" />
-                <span asp-validation-for="Word.Irula" class="text-danger"></span>                
-            </div>
-            <div class="form-group">
-                <label asp-for="Word.Toda" class="control-label"></label>
-                <input asp-for="Word.Toda" class="form-control" />
-                <span asp-validation-for="Word.Toda" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Word.Pania" class="control-label"></label>
-                <input asp-for="Word.Pania" class="form-control" />
-                <span asp-validation-for="Word.Pania" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Word.Maduva" class="control-label"></label>
-                <input asp-for="Word.Maduva" class="form-control" />
-                <span asp-validation-for="Word.Maduva" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Word.Meaning" class="control-label"></label>
-                <input asp-for="Word.Meaning" class="form-control" />
-                <span asp-validation-for="Word.Meaning" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Word.PartOfSpeech" class="control-label"></label>
-                <select asp-for="Word.PartOfSpeech">
-                    <option value="NOUN">NOUN</option>
-                    <option value="VERB">VERB</option>
-                    <option value="ADVERB">ADVERB</option>
-                    <option value="PRONOUN">PRONOUN</option>
-                </select> 
-                <span asp-validation-for="Word.PartOfSpeech" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Word.Categories" class="control-label"></label>
-                <input asp-for="Word.Categories" class="form-control" />
-                <span asp-validation-for="Word.Categories" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<div>
+<!-- <div>
     <a asp-page="Index">Back to List</a>
-</div>
+</div> -->
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -108,7 +121,7 @@
 
         // Enable transliteration in the textfields with the given ids.
         var ids = [ "Word_Tamil" ];
-        transliterationControl.makeTransliteratable(ids);        
+        transliterationControl.makeTransliteratable(ids);
       }
       google.setOnLoadCallback(onLoad);
     </script>
