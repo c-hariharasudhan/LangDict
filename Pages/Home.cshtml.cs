@@ -38,7 +38,7 @@ namespace NewDictionary.Pages
             //     });
             //Console.WriteLine(result.Distinct().Count());
         }
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public string Category{get;set;}
         [BindProperty]
         public List<SelectListItem> Categories {get;set;}
@@ -80,10 +80,10 @@ namespace NewDictionary.Pages
             if(!string.IsNullOrEmpty(SearchText)){
                 Console.WriteLine(Fields.Count());
                 Console.WriteLine(SearchText);
-                Console.WriteLine("Field : {0}, Type : {1}", SearchField, SearchType);
+                Console.WriteLine("Field : {0}, Type : {1}, Category: {2}", SearchField, SearchType, Category);
                 //var result = _repository.GetAllWords().Result;
                 var result = _repository.GetWordsByField(SearchField, 
-                                        SearchText, SearchType).Result;
+                                        SearchText.Trim(), SearchType, Category).Result;
                 
                 Words = result.ToList();
                 Console.WriteLine(Words.Count);

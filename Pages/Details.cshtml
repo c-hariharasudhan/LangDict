@@ -4,76 +4,97 @@
 @{
     ViewData["Title"] = "Details";
 }
-<style>
-    @@font-face {
-        font-family: tamil; src: url('@Url.Content("~/css/font/tamil_aishwarya.ttf")');
-    } 
-</style>
-<h2>Details</h2>
+
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Word Details</a></li>
+    <li><a data-toggle="tab" href="#mediaItems">Media</a></li>
+  </ul>
+
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <div class = "col-sm-12 text-right">
+            <a id="btnPrint" href="#" class="button button-primary">Print</a>
+        </div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Word.English)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Word.English)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Word.Tamil)
+            </dt>
+            <!-- <dd style="font-family:tamil;font-size:20px"> -->
+            <dd>
+                @Html.DisplayFor(model => model.Word.Tamil)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Word.Meaning)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Word.Meaning)
+            </dd>
+            @if(Model.ShowToda){
+                <dt>
+                    @Html.DisplayNameFor(model => model.Word.Toda)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Word.Toda)
+                </dd>
+            }
+            @if(Model.ShowIrula){
+                <dt>
+                    @Html.DisplayNameFor(model => model.Word.Irula)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Word.Irula)
+                </dd>
+            }
+            @if(Model.ShowPania){
+                <dt>
+                    @Html.DisplayNameFor(model => model.Word.Pania)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Word.Pania)
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Word.Categories)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Word.Categories)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Word.PartOfSpeech)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Word.PartOfSpeech)
+            </dd>
+        </dl>
+    </div>
+    <div id="mediaItems" class="tab-pane fade">
+        <h3>Media</h3>
+        <p>TODO (Add media items like Audio / Video files)</p>
+    </div>   
+</div>
 
 <div>
-    <h4>Word</h4>
-    <!--<p style="font-family:tamil;font-size:20px"> hovdyf</p>-->
-                    
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Word.English)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Word.English)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Word.Tamil)
-        </dt>
-        <!-- <dd style="font-family:tamil;font-size:20px"> -->
-        <dd>
-            @Html.DisplayFor(model => model.Word.Tamil)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Word.Meaning)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Word.Meaning)
-        </dd>
-        @if(Model.ShowToda){
-            <dt>
-                @Html.DisplayNameFor(model => model.Word.Toda)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Word.Toda)
-            </dd>
-        }
-        @if(Model.ShowIrula){
-            <dt>
-                @Html.DisplayNameFor(model => model.Word.Irula)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Word.Irula)
-            </dd>
-        }
-        @if(Model.ShowPania){
-            <dt>
-                @Html.DisplayNameFor(model => model.Word.Pania)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Word.Pania)
-            </dd>
-        }
-        <dt>
-            @Html.DisplayNameFor(model => model.Word.Categories)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Word.Categories)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Word.PartOfSpeech)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Word.PartOfSpeech)
-        </dd>
-    </dl>
+<a asp-page="./Home">Back to List</a>
 </div>
-<div>
-    <a asp-page="./Home">Back to List</a>
-</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/printthis.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#btnPrint').click(function(){
+                $('.dl-horizontal').printThis({
+                    base: "https://jasonday.github.io/printThis/",
+                    header: "<h1>Word Details</h1>",
+                    importCSS: true
+                });
+            })
+        })
+    </script>
+}

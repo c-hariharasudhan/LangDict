@@ -51,7 +51,7 @@ namespace NewDictionary.DataAccess {
         }
 
         //public async Task<IEnumerable<Word>> GetWordsByField(string fieldName, string fieldValue)
-        public async Task<IEnumerable<Word>> GetWordsByField(SearchField searchField, string fieldValue, SearchType searchType)
+        public async Task<IEnumerable<Word>> GetWordsByField(SearchField searchField, string fieldValue, SearchType searchType, string category)
         {
             try
             {
@@ -61,6 +61,9 @@ namespace NewDictionary.DataAccess {
                 Console.WriteLine(regex.ToString());
                 var filter = Builders<Word>
                                 .Filter.Regex(fieldName, regex);
+                if(!string.IsNullOrEmpty(category)){
+                    filter = Builders<Word>.Filter.Eq(w => w.Categories, category) & filter;
+                }
                 var result = await _context.Words.Find(filter).ToListAsync();
                 Console.WriteLine(result.Count);
                 return result;
