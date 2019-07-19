@@ -1,0 +1,14 @@
+@page
+@model ListModel
+@{
+    ViewData["Title"] = "Dictionary";
+}
+
+<div class="container">  
+  <hr class="hr-text" data-content="Browse Dictionary">
+  <p>Total count : @Model.Words.Count()</p>
+  <button type="button" class="btn btn-primary btn-circle"><i class="fa fa-list"></i>
+</button>
+<button type="button" class="btn btn-success btn-circle"><i class="fa fa-link"></i>
+</button>
+</div>
