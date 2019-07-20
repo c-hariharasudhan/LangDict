@@ -19,14 +19,17 @@ namespace NewDictionary.Pages
         public List<Word> Words {get;set;}
         [BindProperty(SupportsGet = true)]
         public string SearchKey{get;set;}
+        [BindProperty]
+        public List<char> Options{get;set;}
 
         public ListModel(IDictionaryRepository dictionaryRepository){
             _dictionaryRepository = dictionaryRepository;
+            Options = Enumerable.Range('A', 26).Select(x => (char)x).ToList();
         }
 
         public IActionResult OnGet(){
             Words = new List<Word>();
-            if(!string.IsNullOrEmpty(SearchKey)){
+            if(!string.IsNullOrEmpty(SearchKey) && SearchKey != "*"){
                 var result = _dictionaryRepository.GetWordsByField(SearchField.English, SearchKey, SearchType.StartsWith, null).Result;
                 Words.AddRange(result);
             }
