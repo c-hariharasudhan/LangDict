@@ -4,7 +4,7 @@
     ViewData["Title"] = "Dictionary";
 }
 
-<div class="container">  
+<!-- <div class="container">   -->
   <hr class="hr-text" data-content="Browse Dictionary">
   <div class="row text-center">
     <button type="button" class="btn btn-success btn-circle">*</button>
@@ -15,7 +15,13 @@
   </div>
   <form asp-page="./List" method="get">
   <input type="hidden" name = "SearchKey" value="@Model.SearchKey"></input>
-  <p>Total count : @Model.Words.Count()</p>
+  
+  <div class="well row">
+      <div class="col-sm-6">Total count : @Model.Words.Count()</div> 
+      <div class="col-sm-6 text-right">
+        <a id="btnPrint" href="#" class="button button-primary">Print</a>
+      </div>
+  </div>
   @foreach (var item in Model.Words)
   {
       <div class="list-group">
@@ -39,7 +45,7 @@
       </div>
   }
   </form>
-</div>
+<!-- </div> -->
 
 @section Scripts{
   <script>
